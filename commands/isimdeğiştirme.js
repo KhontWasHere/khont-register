@@ -3,16 +3,16 @@ const db = require("quick.db");
 const ayarlar = require("../ayarlar.json")
 
 module.exports.run = async (client, message, args) => {
-    if(!ayarlar.yetkiliRol.some(arwww => message.member.roles.cache.has(arwww)) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`${ayarlar.no} **Bu işlemi gerçekleştirmek için gerekli yetkin yok!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
+    if(!ayarlar.yetkiliRol.some(arwww => message.member.roles.cache.has(arwww)) && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`${ayarlar.noemoji} **Bu işlemi gerçekleştirmek için gerekli yetkin yok!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
 
     const etiketlenen = message.mentions.members.first() || message.guild.members.cache.get(args[0])
-if(!etiketlenen) return message.channel.send(`${ayarlar.no} **İsim değiştirmek için bir kişi etiketlemelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
+if(!etiketlenen) return message.channel.send(`${ayarlar.noemoji} **İsim değiştirmek için bir kişi etiketlemelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
 
 const isim = args[1];
 const yaş = args[2];
-if(!isim) return message.channel.send(`${ayarlar.no} **İsim değiştirmek için bir isim belirtmelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
-if(!yaş) return message.channel.send(`${ayarlar.no} **İsim değiştirmek için için bir yaş belirtmelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
-if(isNaN(yaş)) return message.channel.send(`${ayarlar.no} **Belirttiğin yaş rakamlardan oluşmalı!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
+if(!isim) return message.channel.send(`${ayarlar.noemoji} **İsim değiştirmek için bir isim belirtmelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
+if(!yaş) return message.channel.send(`${ayarlar.noemoji} **İsim değiştirmek için için bir yaş belirtmelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
+if(isNaN(yaş)) return message.channel.send(`${ayarlar.noemoji} **Belirttiğin yaş rakamlardan oluşmalı!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
 
 etiketlenen.setNickname(`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}`)
 
