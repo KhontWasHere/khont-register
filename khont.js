@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
 const moment = require("moment")///discord.gg/immortalxd
@@ -107,7 +108,53 @@ client.on("guildMemberAdd", member => {
 }); ///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
-   
+   Guard({ 
+    whitelist: ["ID","Whitelist Id Yapıştır"],
+    server_id: "SERVER_ID",
+    log_channel_id: "LOG_CHANNEL_ID",
+    slave_role:"SLAVE_ROLE_ID",
+    
+    //1 active 0 deactive
+    
+    channel_create: 1, //kanal oluşturma limit
+    channel_delete: 1, //kanal silme limit
+    channel_update: 1, //Kanal düzenleme limit
+    
+    role_create: 1, //Rol oluşturma limit
+    role_delete: 1, //Rol silme limit
+    role_update: 1, //Rol düzenleme limit
+    
+    emoji_create: 1, //Emoji oluşturma limşt
+    emoji_delete: 1, //Emoji silme limit
+ 
+    webhook_update: 1, //webhook düzenleme limit
+    
+    guild_ban_add: 1, //ban limit
+    guild_kick_add: 1, //kick limit
+    guild_member_role_update: 1, //bir kişiye rol verme limit
+    guild_bot_add: 1, //bot ekleme limit
+    guild_update: 1, // sunucu düzenleme limit
+    
+    channel_create_log_message: '-user- created -channel-', //log
+    channel_delete_log_message: '-user- deleted -channel-', //log
+    channel_update_log_message: '-user- updated -channel-',//log
+    
+    role_create_log_message: '-user- created -role-',//log
+    role_delete_log_message: '-user- deleted -role-',//log
+    role_update_log_message: '-user- updated -role-',//log
+    
+    emoji_create_log_message: '-user- created -emoji-',//log
+    emoji_delete_log_message: '-user- deleted -emoji-',//log
+ 
+   webhook_update_log_message: '-user- updated -webhook-',//log
+
+    guild_ban_add_log_message: '-user- banned -target-',//log
+    guild_kick_add_log_message: '-user- kicked -target-',//log
+    guild_member_role_update_log_message: '-user- given a role to user -role-',//log
+    guild_bot_add_log_message: '-user- added a bot -bot-',//log
+    guild_update_log_message: '-user- updated guild'//log
+  
+},client);
 
 client.on("ready", () => {
   client.channels.cache.get(ayarlar.botSesKanal).join();
