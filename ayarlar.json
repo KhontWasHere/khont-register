@@ -1,0 +1,27 @@
+ {
+    "sahip" : "795274240357957662",
+    "token" : "",
+    "prefix" : ".",
+    "footer" : "Khont <3",
+
+    "tag" : "",
+    "sembol" : "•",
+  
+    "yetkiliRol" : ["Çoğaltmak isterseniz parantezin içine virgül ve çift tırnak ile koyabilirsiniz"],
+    "boosterRol" : "",
+    "tagRol" : "",
+    "kayıtsızRol" : "",
+    "erkekRol1" : "",
+    "erkekRol2" : "",
+    "kadınRol1" : "",
+    "kadınRol2" : "",
+
+    "chat" : "", 
+    "botSesKanal" : "",
+  
+    "yes" : "",
+    "no" : "",
+     "registration": {
+        "GuilDTag": "" 
+     }
+}
