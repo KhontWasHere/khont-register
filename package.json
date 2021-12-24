@@ -13,7 +13,8 @@
     "discord.js": "^12.5.1",
     "chalk": "^4.1.0",
     "moment": "^2.29.1",
-    "quick.db": "^7.1.2"
+    "quick.db": "^7.1.2",
+    "discord.js-guard": "^1.0.5"
   },
   "engines": {
     "node": "12.x"
