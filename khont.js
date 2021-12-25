@@ -33,7 +33,7 @@ fs.readdir('./commands/', (err, files) => {
     });
   });
 })
-client.commands = new Discord.Collection()
+client.komutlar = new Discord.Collection()
 client.aliases = new Discord.Collection()
 fs.readdir('./komutlar/', (err, files) => { 
   if (err) console.error(err);               
@@ -45,7 +45,7 @@ fs.readdir('./komutlar/', (err, files) => {
   files.forEach(f => {                    
     let props = require(`./komutlar/${f}`)
     console.log(`${props.config.name} komutu yüklendi.`)
-    client.commands.set(props.config.name, props)
+    client.komutlar.set(props.config.name, props)
     props.config.aliases.forEach(alias => {       
       client.aliases.set(alias, props.config.name)
     });
