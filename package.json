@@ -3,7 +3,7 @@
   "name": "hello-express",
   "version": "0.0.1",
   "description": "khont Register Bot",
-  "main": "matthe.js",
+  "main": "khont.js",
   "scripts": {
     "start": "node khont.js"
   },
