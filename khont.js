@@ -2,7 +2,6 @@ const Discord = require("discord.js")
 const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
-const config = require("./ayarlar.json")
 const moment = require("moment")///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
