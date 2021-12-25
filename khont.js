@@ -33,6 +33,24 @@ fs.readdir('./commands/', (err, files) => {
     });
   });
 })
+client.commands = new Discord.Collection()
+client.aliases = new Discord.Collection()
+fs.readdir('./komutlar/', (err, files) => { 
+  if (err) console.error(err);               
+  console.log(`${files.length} komut yüklenecek.`)///discord.gg/immortalxd
+///discord.gg/immortalxd Benim Sunucum!
+///discord.gg/immortalxd ///discord.gg/immortalxd
+///discord.gg/immortalxd Benim Sunucum!
+///discord.gg/immortalxd 
+  files.forEach(f => {                    
+    let props = require(`./komutlar/${f}`)
+    console.log(`${props.config.name} komutu yüklendi.`)
+    client.commands.set(props.config.name, props)
+    props.config.aliases.forEach(alias => {       
+      client.aliases.set(alias, props.config.name)
+    });
+  });
+})
 client.on('message', msg => {
   if (msg.content === '.tag') {
     msg.channel.send(`${ayarlar.tag}`);
