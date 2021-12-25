@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
+const config = require("./ayarlar.json")
 const moment = require("moment")///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
@@ -33,16 +34,6 @@ fs.readdir('./commands/', (err, files) => {
     });
   });
 })
-///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
-///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
-///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
-
 client.on('message', msg => {
   if (msg.content === '.tag') {
     msg.channel.send(`${ayarlar.tag}`);
@@ -95,31 +86,21 @@ client.on("guildMemberAdd", member => {
   moment.locale("tr");
   if (zaman < 1296000000){
     kontrol = `Güvenli Değilsin.`
-    member.roles.add("Şüptheli Hesap Rol İd")
+    member.roles.add("924232149664665600")
     member.setNickname("Yeni Hesap")
-    sKanal.send(`<a:immoetiket:923249751812603934> **__ İmmortal'a hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
+    sKanal.send(`<a:immoetiket:923249751812603934> **__ Denemeye hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#924239730567163935> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
   }else{
     kontrol = `Güvenlisin.`
-    member.roles.add("Kayıtsız Rol");
+    member.roles.add("924232149664665600");
     member.roles.add("İkinci Kayıtsız ROl Yoksa boş bırak!");
     member.setNickname("İsim | Yaş!") 
-    kanal.send(`<a:immoetiket:923249751812603934> **__ İmmortal'a hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
+    kanal.send(`<a:immoetiket:923249751812603934> **__ Denemeye hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#924239730567163935> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
   }
 }); ///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
 
 //////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN
-
-client.on('voiceStateUpdate', async (oldState, newState) => {
-    if (!oldState.channelID && newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanala girdi!`);
-    if (oldState.channelID && !newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(oldState.channelID).name}\` adlı sesli kanaldan ayrıldı!`);
-    if (oldState.channelID && newState.channelID && oldState.channelID != newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi ses kanalını değiştirdi! (\`${newState.guild.channels.cache.get(oldState.channelID).name}\` - \`${newState.guild.channels.cache.get(newState.channelID).name}\`)`);
-    if (oldState.channelID && oldState.selfMute && !newState.selfMute) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendi susturmasını kaldırdı!`);
-    if (oldState.channelID && !oldState.selfMute && newState.selfMute) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendini susturdu!`);
-    if (oldState.channelID && oldState.selfDeaf && !newState.selfDeaf) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendi sağırlaştırmasını kaldırdı!`);
-    if (oldState.channelID && !oldState.selfDeaf && newState.selfDeaf) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendini sağırlaştırdı!`);
-});
 
 client.on('messageDelete', (message) => {
     if (!message.guild || message.author.bot) return;
@@ -135,12 +116,6 @@ client.on('messageDelete', (message) => {
         .setThumbnail(message.guild.iconURL({ dynamic: true }))
     client.channels.cache.get(ayarlar.logs.messagelog).send(embed)
 })
-
-client.on("guildBanRemove", function (guild, user) {
-    if (db.get(`ban.${user.id}`) === true) guild.members.ban(user.id, { reason: "Açılmaz banke." })
-});
-
-
 
    Guard({ 
     whitelist: ["ID","Whitelist Id Yapıştır"],
@@ -189,6 +164,9 @@ client.on("guildBanRemove", function (guild, user) {
     guild_update_log_message: '-user- updated guild'//log
   
 },client);
+
+
+
 
 client.on("ready", () => {
   client.channels.cache.get(ayarlar.botSesKanal).join();
