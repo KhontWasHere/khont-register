@@ -143,15 +143,6 @@ client.on("guildMemberAdd", member => {
 },client);
 
 
-client.on('message', message => {
-    const prefix = config.prefix; // prefix
-    if (!message.guild || message.author.bot || !message.content.startsWith(prefix)) return;
-    const args = message.content.slice(1).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
-    if (!cmd) return;
-    cmd.run(client, message, args)
-})
 
 
 
