@@ -15,7 +15,9 @@
     "erkekRol2" : "",
     "kadınRol1" : "",
     "kadınRol2" : "",
-    "messagelogs" : "",
+     "logs": {
+        "messagelog": "",
+        "voicelog": ""
 
     "chat" : "", 
     "botSesKanal" : "",
