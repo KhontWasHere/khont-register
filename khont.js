@@ -2,7 +2,6 @@ const Discord = require("discord.js")
 const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
-const config = require("./ayarlar.json")
 const moment = require("moment")///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
@@ -52,8 +51,6 @@ client.on('message', msg => {
   }
 });
 
-
-
 client.on("guildMemberAdd", member => {
   var userSize = member.guild.members.cache.size.toString().replace(/ /g, "    ")
   var uS = userSize.match(/([0-9])/g)
@@ -79,22 +76,21 @@ client.on("guildMemberAdd", member => {
   let reyn = client.users.cache.get(member.id);
   let zaman = new Date().getTime() - reyn.createdAt.getTime();  
   const HGzaman = moment.duration(zaman).format(` YY **[Yıl]** MM **[Ay]** DD **[Gün]**`)
-  const kanal = member.guild.channels.cache.find(r => r.id === "kayıt kanal");
-  const sKanal = member.guild.channels.cache.find(r => r.id === "Sohbet Kanal İd");
+  const kanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");/// KAYIT KANALI İD
+  const sKanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");////ŞÜPHELİ KANAL İD
   var kontrol;
-  if(member.user.username.includes("TAG")){member.roles.add("Tag Rol")}
+  if(member.user.username.includes("∆")){member.roles.add("921443100306587659")}
   moment.locale("tr");
   if (zaman < 1296000000){
     kontrol = `Güvenli Değilsin.`
-    member.roles.add("924232149664665600")
-    member.setNickname("Yeni Hesap")
-    sKanal.send(`<a:immoetiket:923249751812603934> **__ Denemeye hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#924239730567163935> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
+    member.roles.add("924232149664665600")///ŞÜPHELİ ROL İD
+    member.setNickname("• Yeni Hesap")
+    sKanal.send(`<a:immoetiket:923249751812603934> **__ Deneme Diyarına hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
   }else{
     kontrol = `Güvenlisin.`
-    member.roles.add("924232149664665600");
-    member.roles.add("İkinci Kayıtsız ROl Yoksa boş bırak!");
-    member.setNickname("İsim | Yaş!") 
-    kanal.send(`<a:immoetiket:923249751812603934> **__ Denemeye hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#924239730567163935> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
+    member.roles.add("924232149664665600");////KAYITSIZ ROL İD
+    member.setNickname("İsim | Yaş") 
+    kanal.send(`<a:immoetiket:923249751812603934> **__ Deneme Diyarına hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
   }
 }); ///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
@@ -102,26 +98,12 @@ client.on("guildMemberAdd", member => {
 
 //////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN
 
-client.on('messageDelete', (message) => {
-    if (!message.guild || message.author.bot) return;
-    const embed = new Discord.MessageEmbed()
-        .setAuthor("Mesaj Silindi", message.author.avatarURL({ dynamic: true }))
-         .addField(" **Mesaj Kanalı**", `${message.channel}`, true)
-        .addField(" **Mesaj Sahibi**", `${message.author.tag}`, true)
-        .addField(" **Mesaj Silinme Tarihi**", `**${moment().format('LLL')}**`, true)
-        .setDescription(" **Silinen mesaj:** \`${message.content.replace("`", "")}\``)
-        .setTimestamp()
-        .setColor("#00a3aa")
-        .setFooter("Mesaj silindiği saat:")
-        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-    client.channels.cache.get(ayarlar.logs.messagelog).send(embed)
-})
 
    Guard({ 
-    whitelist: ["ID","Whitelist Id Yapıştır"],
-    server_id: "SERVER_ID",
-    log_channel_id: "LOG_CHANNEL_ID",
-    slave_role:"SLAVE_ROLE_ID",
+    whitelist: ["795274240357957662","W795274240357957662"],
+    server_id: "924230603237392394",
+    log_channel_id: "924231968709832745",
+    slave_role:"924232055158636544",
     
     //1 active 0 deactive
     
