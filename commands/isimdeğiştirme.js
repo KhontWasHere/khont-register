@@ -37,4 +37,5 @@ Yetkili: message.author.id
 exports.config = {
     name: "isim",
     guildOnly: true,
-    aliases: ["i", "nick
+   aliases: ["i", "nick"]
+}
