@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
+const config = require("./ayarlar.json")
 const moment = require("moment")///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
@@ -20,10 +21,6 @@ client.aliases = new Discord.Collection()
 fs.readdir('./commands/', (err, files) => { 
   if (err) console.error(err);               
   console.log(`${files.length} komut yüklenecek.`)///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd ///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
   files.forEach(f => {                    
     let props = require(`./commands/${f}`)
     console.log(`${props.config.name} komutu yüklendi.`)
@@ -33,24 +30,7 @@ fs.readdir('./commands/', (err, files) => {
     });
   });
 })
-client.commands = new Discord.Collection()
-client.aliases = new Discord.Collection()
-fs.readdir('./komutlar/', (err, files) => { 
-  if (err) console.error(err);               
-  console.log(`${files.length} komut yüklenecek.`)///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd ///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
-  files.forEach(f => {                    
-    let props = require(`./commands/${f}`)
-    console.log(`${props.config.name} komutu yüklendi.`)
-    client.commands.set(props.config.name, props)
-    props.config.aliases.forEach(alias => {       
-      client.aliases.set(alias, props.config.name)
-    });
-  });
-})
+
 client.on('message', msg => {
   if (msg.content === '.tag') {
     msg.channel.send(`${ayarlar.tag}`);
@@ -94,34 +74,32 @@ client.on("guildMemberAdd", member => {
   let reyn = client.users.cache.get(member.id);
   let zaman = new Date().getTime() - reyn.createdAt.getTime();  
   const HGzaman = moment.duration(zaman).format(` YY **[Yıl]** MM **[Ay]** DD **[Gün]**`)
-  const kanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");/// KAYIT KANALI İD
-  const sKanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");////ŞÜPHELİ KANAL İD
+  const kanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");
+  const sKanal = member.guild.channels.cache.find(r => r.id === "924230603237392396");
   var kontrol;
   if(member.user.username.includes("∆")){member.roles.add("921443100306587659")}
   moment.locale("tr");
   if (zaman < 1296000000){
     kontrol = `Güvenli Değilsin.`
-    member.roles.add("924232149664665600")///ŞÜPHELİ ROL İD
+    member.roles.add("924232149664665600")
     member.setNickname("• Yeni Hesap")
-    sKanal.send(`<a:immoetiket:923249751812603934> **__ Deneme Diyarına hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
+    sKanal.send(`<a:immoetiket:923249751812603934> **__ DENEME DİYARINA hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Maalesef. Hesabın yeni olduğu için kayıt olamıyorsun bir **yetkiliyle iletişime geç.**`).catch(err => console.error(err));
   }else{
     kontrol = `Güvenlisin.`
-    member.roles.add("924232149664665600");////KAYITSIZ ROL İD
+    member.roles.add("924232149664665600");
+    member.roles.add("");
     member.setNickname("İsim | Yaş") 
-    kanal.send(`<a:immoetiket:923249751812603934> **__ Deneme Diyarına hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
+    kanal.send(`<a:immoetiket:923249751812603934> **__ DENEME DİYARINA hoş geldin__** <@`+ member + `> \n\n   <a:immoetiket:923249751812603934> Hesabın \`` + HGzaman + `\` önce oluşturulmuş. Bence **\`` + kontrol + `\`**\n\n <a:immoetiket:923249751812603934>   Sunucu kurallarımız <#921443100772151440> kanalında bulunmaktadır. Sunucu içerisindeki cezai işlemlerin kuralları okuduğun varsayılarak gerçekleştirilecektir.\n\n <a:immoetiket:923249751812603934> Seninle beraber `+userSize+ ` kişiye ulaştık. Sol tarafta bulunan \`V.Confirmed\` kanallarından birine girerek kayıt işlemini gerçekleştirebilirsin! İyi eğlenceler.`).catch(err => console.error(err));
   }
-}); ///discord.gg/immortalxd
-///discord.gg/immortalxd Benim Sunucum!
-///discord.gg/immortalxd 
-
-//////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN
+});
+//////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN///////////////
 
 
    Guard({ 
-    whitelist: ["795274240357957662","W795274240357957662"],
+    whitelist: ["","795274240357957662"],
     server_id: "924230603237392394",
     log_channel_id: "924231968709832745",
-    slave_role:"924232055158636544",
+    slave_role:"",
     
     //1 active 0 deactive
     
@@ -166,7 +144,113 @@ client.on("guildMemberAdd", member => {
 },client);
 
 
+client.on('message', message => {
+    const prefix = config.prefix; // prefix
+    if (!message.guild || message.author.bot || !message.content.startsWith(prefix)) return;
+    const args = message.content.slice(1).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
+    if (!cmd) return;
+    cmd.run(client, message, args)
+})
 
+
+
+
+
+const invites = {};
+const wait = require("util").promisify(setTimeout);
+client.on('ready', () => {
+    wait(1000);
+    client.guilds.cache.forEach(g => {
+        g.fetchInvites().then(guildInvites => {
+            invites[g.id] = guildInvites;
+        });
+    });
+})
+
+client.on('guildMemberAdd', (member) => {
+    if (member.user.bot) return;
+    const user = client.users.cache.get(member.id);
+    member.guild.fetchInvites().then(async guildInvites => {
+        const ei = invites[member.guild.id];
+        invites[member.guild.id] = guildInvites;
+        const veri = await guildInvites.find(i => (ei.get(i.code) == null ? (i.uses - 1) : ei.get(i.code).uses) < i.uses);
+        var daveteden;
+        if (!veri) daveteden = "Bulunamadı"
+        else daveteden = member.guild.members.cache.get(veri)
+        var b = veri.guild.vanityURLCode
+        if (!b) b = veri.code
+        if (veri.code == b) daveteden = member.guild.members.cache.get(veri.inviter.id)
+        else daveteden = member.guild;
+        db.add(`davetsayi.${daveteden.id}.${member.guild.id}`, +1);
+        db.add(`toplam.${daveteden.id}.${member.guild.id}`, +1);
+        db.push(`günlük.${daveteden.id}.${member.guild.id}`, { userID: member.user.id })
+        let zaman = require("moment").duration(new Date().getTime() - client.users.cache.get(member.id).createdAt.getTime())
+        if (zaman < 604800017) {
+            db.add(`davetsayi.${daveteden.id}.${member.guild.id}`, -1);
+            db.add(`fake.${daveteden.id}_${member.guild.id}`, +1);
+        }
+        db.set(`veri.${member.id}.${member.guild.id}`, daveteden.id);
+        let a = await db.fetch(`davetsayi.${daveteden.id}.${member.guild.id}`);
+        let davetsayi;
+        if (!a) { davetsayi = 0; }
+        else { davetsayi = await db.fetch(`davetsayi.${daveteden.id}.${member.guild.id}`); }
+        var y;
+        if (daveteden.id == member.guild.id) y = "discord.gg/immortalxd"
+        else y = daveteden.user.tag
+        member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> ${member} kullanıcısı sunucuya katıldı! **Davet Eden:** ${y} ( **${davetsayi ? davetsayi : '0'}** davet )`);
+    });
+});
+
+client.on("guildMemberRemove", async member => {
+    const user = client.users.cache.get(member.id);
+
+    member.guild.fetchInvites().then(async guildInvites => {
+        const veri = await db.fetch(`veri.${member.id}.${member.guild.id}`);
+        var daveteden;
+        if (!veri) daveteden = "Bulunamadı"
+        else daveteden = member.guild.members.cache.get(veri)
+
+        let zaman = require("moment").duration(new Date().getTime() - client.users.cache.get(member.id).createdAt.getTime())
+
+        if (zaman < 1296000000) {
+            db.add(`fake.${daveteden.id}.${member.guild.id}`, -1);
+            db.add(`davetsayi.${daveteden.id}.${member.guild.id}`, -1);
+            if (veri) {
+                db.delete(`veri.${member.id}.${member.guild.id}`);
+            }
+        } else {
+            db.add(`davetsayi.${daveteden.id}.${member.guild.id}`, -1);
+            if (veri) {
+                db.delete(`veri.${member.id}.${member.guild.id}`);
+            }
+        }
+        var y;
+        if (daveteden.id == member.guild.id) y = "discord.gg/immortalxd"
+        else y = daveteden.user
+        const davetsayi = await db.fetch(`davetsayi.${daveteden.id}.${member.guild.id}`);
+        if (zaman < 1296000000) {
+            if (!veri) {
+                return member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> Sunucudan \`${member.user.tag}\` çıkış yaptı. **Davet eden:** Bulunamadı.`);
+            } else if (daveteden.id == member.guild.id) {
+                member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
+            } else {
+                member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
+            }
+        } else {
+            {
+                if (!veri) {
+                     member.guild.channels.get(config.logchannel).send(`\`${member.user.tag}\` çıktı, **Davet eden:** Bulunamadı!`);
+                } else if (daveteden.id == member.guild.id) {
+                    member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
+                } else {
+                    member.guild.channels.cache.get(config.logchannel).send(`<a:krkr:921679287227134003> Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
+                }
+            }
+        }
+    })
+});
 
 client.on("ready", () => {
   client.channels.cache.get(ayarlar.botSesKanal).join();
