@@ -18,7 +18,7 @@ etiketlenen.roles.add(ayarlar.kadınRol1)
 etiketlenen.roles.add(ayarlar.kadınRol2)
 etiketlenen.roles.remove(ayarlar.kayıtsızRol)
 etiketlenen.setNickname(`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}`)
-message.react(ayarlar.yes)
+
 
 const arwEmbed = new Discord.MessageEmbed()
 .setColor("RANDOM")
@@ -27,6 +27,7 @@ const arwEmbed = new Discord.MessageEmbed()
 .setFooter(ayarlar.footer)
 .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
 .setTimestamp()
+message.react(ayarlar.yes)
 
 message.channel.send(arwEmbed)
 
