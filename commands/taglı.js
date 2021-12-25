@@ -19,7 +19,7 @@ etiketlenen.roles.add(ayarlar.tagRol)
 
 
 
-message.channel.send(arwEmbed.setDescription(`Kullanıcıya başarıyla taglı rolü verildi!`))//Youtube Matthe
+message.channel.send(arwEmbed.setDescription(`Kullanıcıya başarıyla taglı rolü verildi!`))/
 message.react(ayarlar.yes)
 }
 exports.config = {
