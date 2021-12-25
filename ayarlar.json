@@ -1,30 +1,31 @@
- {
+{
     "sahip" : "795274240357957662",
-    "token" : "",
+    "token": "OTI0MjM0Mzg0MjI2MjYzMDcw.YcbmWA.eLvIXLgV4ae_T9h2UCt0AXPa2MI",
     "prefix" : ".",
     "footer" : "Khont <3",
 
-    "tag" : "",
+    "tag" : "&",
     "sembol" : "•",
   
-    "yetkiliRol" : ["Çoğaltmak isterseniz parantezin içine virgül ve çift tırnak ile koyabilirsiniz"],
+    "yetkiliRol" : ["924232055158636544"],
     "boosterRol" : "",
-    "tagRol" : "",
-    "kayıtsızRol" : "",
-    "erkekRol1" : "",
-    "erkekRol2" : "",
-    "kadınRol1" : "",
-    "kadınRol2" : "",
-     "logs": {
-        "messagelog": "",
-        "voicelog": "",
-
-    "chat" : "", 
-    "botSesKanal" : "",
+    "tagRol" : "924234728578617344",
+    "kayıtsızRol" : "924232149664665600",
+    "erkekRol1" : "924232173685465089",
+    "logchannel": "924230603237392396",
+    "erkekRol2" : "924232332876087326",
+    "kadınRol1" : "924232208464633926",
+    "kadınRol2" : "924232355265257473",
+    "logs": {
+        "messagelog": "924231942835150858",
+        "voicelog": "924231968709832745"},
   
-    "yes" : "",
-    "no" : "",
+    "chat" : "924230603237392397", 
+    "botSesKanal" : "924234639646814249",
+  
+    "yes" : "<a:OnaylamakGif:922220389646618624>",
+    "noemoji" : "<a:ReddetmekGif:922220391802486794>",
      "registration": {
-        "GuilDTag": "" 
+        "GuilDTag": "&" 
      }
-}
+      }
