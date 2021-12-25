@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     const etiketlenen = message.mentions.members.first() || message.guild.members.cache.get(args[0])
 if(!etiketlenen) return message.channel.send(`${ayarlar.noemoji} **Kayıtsıza atmak için bir kişi etiketlemelisin!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
 
-if(message.member.roles.highest.position <= etiketlenenKişi.roles.highest.position) return message.channel.send(`${ayarlar.noemoji} **Senden üstte/aynı pozisyonda bir kişiyi kayıtsıza atamazsın!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
+if(message.member.roles.highest.position <= etiketlenen.roles.highest.position) return message.channel.send(`${ayarlar.noemoji} **Senden üstte/aynı pozisyonda bir kişiyi kayıtsıza atamazsın!**`).then(message.react(client.emojis.cache.get(ayarlar.no)))
 
 const arwEmbed = new Discord.MessageEmbed()
 .setColor("RANDOM")
