@@ -18,9 +18,9 @@ const arwEmbed = new Discord.MessageEmbed()
 etiketlenen.roles.set([ayarlar.kayıtsızRol])
 etiketlenen.setNickname(`${ayarlar.tag} İsim ${ayarlar.sembol} Yaş`)
 
-message.react(ayarlar.yes)
+messa
 
-message.channel.send(arwEmbed.setDescription(` Kullanıcı başarıyla kayıtsıza (<@&${ayarlar.kayıtsızRol}>) atıldı!`))//Youtube Matthe
+message.channel.send(arwEmbed.setDescription(` Kullanıcı başarıyla kayıtsıza (<@&${ayarlar.kayıtsızRol}>) atıldı!`))
 
 }
 exports.config = {
