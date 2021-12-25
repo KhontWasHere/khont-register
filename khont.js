@@ -110,6 +110,17 @@ client.on("guildMemberAdd", member => {
 ///discord.gg/immortalxd 
 
 //////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN
+
+client.on('voiceStateUpdate', async (oldState, newState) => {
+    if (!oldState.channelID && newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanala girdi!`);
+    if (oldState.channelID && !newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(oldState.channelID).name}\` adlı sesli kanaldan ayrıldı!`);
+    if (oldState.channelID && newState.channelID && oldState.channelID != newState.channelID) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi ses kanalını değiştirdi! (\`${newState.guild.channels.cache.get(oldState.channelID).name}\` - \`${newState.guild.channels.cache.get(newState.channelID).name}\`)`);
+    if (oldState.channelID && oldState.selfMute && !newState.selfMute) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendi susturmasını kaldırdı!`);
+    if (oldState.channelID && !oldState.selfMute && newState.selfMute) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendini susturdu!`);
+    if (oldState.channelID && oldState.selfDeaf && !newState.selfDeaf) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendi sağırlaştırmasını kaldırdı!`);
+    if (oldState.channelID && !oldState.selfDeaf && newState.selfDeaf) return newState.guild.channels.cache.get(ayarlar.logs.voicelog).send(`${newState.guild.members.cache.get(newState.id).displayName} üyesi \`${newState.guild.channels.cache.get(newState.channelID).name}\` adlı sesli kanalda kendini sağırlaştırdı!`);
+});
+
 client.on('messageDelete', (message) => {
     if (!message.guild || message.author.bot) return;
     const embed = new Discord.MessageEmbed()
@@ -124,6 +135,12 @@ client.on('messageDelete', (message) => {
         .setThumbnail(message.guild.iconURL({ dynamic: true }))
     client.channels.cache.get(ayarlar.logs.messagelog).send(embed)
 })
+
+client.on("guildBanRemove", function (guild, user) {
+    if (db.get(`ban.${user.id}`) === true) guild.members.ban(user.id, { reason: "Açılmaz banke." })
+});
+
+
 
    Guard({ 
     whitelist: ["ID","Whitelist Id Yapıştır"],
