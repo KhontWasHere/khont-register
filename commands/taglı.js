@@ -17,10 +17,10 @@ if(etiketlenen.roles.cache.has(ayarlar.tagRol)) return message.channel.send(arwE
 
 etiketlenen.roles.add(ayarlar.tagRol)
 
-message.react(ayarlar.yes)
+
 
 message.channel.send(arwEmbed.setDescription(`Kullanıcıya başarıyla taglı rolü verildi!`))//Youtube Matthe
-
+message.react(ayarlar.yes)
 }
 exports.config = {
     name: "tagges",
