@@ -108,6 +108,23 @@ client.on("guildMemberAdd", member => {
 }); ///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
+
+//////////////////////////////MESSAGE LOGU BURDA AYARLARA messagelog KISMINA İD YAPIŞTIRIN
+client.on('messageDelete', (message) => {
+    if (!message.guild || message.author.bot) return;
+    const embed = new Discord.MessageEmbed()
+        .setAuthor("Mesaj Silindi", message.author.avatarURL({ dynamic: true }))
+         .addField(" **Mesaj Kanalı**", `${message.channel}`, true)
+        .addField(" **Mesaj Sahibi**", `${message.author.tag}`, true)
+        .addField(" **Mesaj Silinme Tarihi**", `**${moment().format('LLL')}**`, true)
+        .setDescription(" **Silinen mesaj:** \`${message.content.replace("`", "")}\``)
+        .setTimestamp()
+        .setColor("#00a3aa")
+        .setFooter("Mesaj silindiği saat:")
+        .setThumbnail(message.guild.iconURL({ dynamic: true }))
+    client.channels.cache.get(ayarlar.logs.messagelog).send(embed)
+})
+
    Guard({ 
     whitelist: ["ID","Whitelist Id Yapıştır"],
     server_id: "SERVER_ID",
