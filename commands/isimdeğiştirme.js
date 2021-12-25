@@ -16,7 +16,7 @@ if(isNaN(yaş)) return message.channel.send(`${ayarlar.noemoji} **Belirttiğin y
 
 etiketlenen.setNickname(`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}`)
 
-message.react(ayarlar.yes)
+
 
 const arwEmbed = new Discord.MessageEmbed()
 .setColor("RANDOM")
@@ -24,6 +24,7 @@ const arwEmbed = new Discord.MessageEmbed()
 .setFooter(ayarlar.footer)
 .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
 .setTimestamp()
+message.react(ayarlar.yes)
 
 message.channel.send(arwEmbed)
 
@@ -37,5 +38,5 @@ Yetkili: message.author.id
 exports.config = {
     name: "isim",
     guildOnly: true,
-   aliases: ["i", "nick"]
+   aliases: ["i", "nick", "isimdeğiştir"]
 }
