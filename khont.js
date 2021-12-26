@@ -2,13 +2,17 @@ const Discord = require("discord.js")
 const Guard = require('discord.js-guard');
 const client = new Discord.Client()
 const ayarlar = require("./ayarlar.json")
+const config = require("./ayarlar.json")
+const Jimp = require("jimp");
+const buton = require('discord-buttons')
 const moment = require("moment")///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
 const fs = require('fs');
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
 const db = require("quick.db")
-const chalk = require("chalk")///discord.gg/immortalxd
+const chalk = require("chalk")
+buton(client)///discord.gg/immortalxd
 ///discord.gg/immortalxd Benim Sunucum!
 ///discord.gg/immortalxd 
 require('./util/Loader.js')(client)///discord.gg/immortalxd
@@ -142,11 +146,12 @@ client.on("guildMemberAdd", member => {
   
 },client);
 
+client.login(ayarlar.token)
 
 
 
 
-
+///////////////////////////////////İNVİTE LOG İÇİN AYARLARDAKİ LOGS A GİRİN////////////////////////
 
 const invites = {};
 const wait = require("util").promisify(setTimeout);
@@ -242,8 +247,65 @@ client.on("guildMemberRemove", async member => {
     })
 });
 
+
+////////////////////////////BUTONN/////////////////////////////
+
+client.on("message", (message) => {
+
+    if (message.content !== ".butogawegawegawegaega312541gawn" || message.author.bot) return;
+  
+  let EtkinlikKatılımcısı = new buton.MessageButton()
+    .setStyle('red') 
+    .setLabel('Etkinlik Katılımcısı') 
+    .setID('EtkinlikKatılımcısı'); 
+
+  let ÇekilişKatılımcısı = new buton.MessageButton()
+    .setStyle('green') 
+    .setLabel('Çekiliş Katılımcısı') 
+    .setID('ÇekilişKatılımcısı');
+  
+  message.channel.send(`
+Merhaba!
+ 
+Çekiliş Katılımcısı alarak **nitro, spotify, netflix ve benzeri çekilişlere katılıp ödül sahibi** olabilirsiniz.
+Aşağıda bulunan butonlardan **Etkinlik Katılımcısı alarak konserlerimizden, oyunlarımızdan, ve etkinliklerimizden** faydalanabilirsiniz.
+\`NOT:\` Kayıtlı , kayıtsız olarak hepiniz bu kanalı görebilmektesiniz. Bu sunucumuzda everyone here atılmayacağından dolayı kesinlikle rollerinizi almayı unutmayın. @everyone & @here
+`, { 
+    buttons: [ EtkinlikKatılımcısı, ÇekilişKatılımcısı]
+});
+});
+  
+client.on('clickButton', async (button) => {
+
+    if (button.id === 'EtkinlikKatılımcısı') {
+        if (button.clicker.member.roles.cache.get((ayarlar.EtkinlikKatılımcısı))) {
+            await button.clicker.member.roles.remove((ayarlar.EtkinlikKatılımcısı))
+            await button.reply.think(true);
+            await button.reply.edit("Etkinlik Katılımcısı rolü başarıyla üzerinizden alındı!")
+        } else {
+            await button.clicker.member.roles.add(((ayarlar.EtkinlikKatılımcısı)))
+            await button.reply.think(true);
+            await button.reply.edit("Etkinlik Katılımcısı rolünü başarıyla aldınız!")
+        }
+    }
+
+
+    if (button.id === 'ÇekilişKatılımcısı') {
+        if (button.clicker.member.roles.cache.get((ayarlar.ÇekilişKatılımcısı))) {
+            await button.clicker.member.roles.remove((ayarlar.ÇekilişKatılımcısı))
+            await button.reply.think(true);
+            await button.reply.edit(`Çekiliş Katılımcısı rolü başarıyla üzerinizden alındı!`)
+        } else {
+            await button.clicker.member.roles.add((ayarlar.ÇekilişKatılımcısı))
+            await button.reply.think(true);
+            await button.reply.edit(`Çekiliş Katılımcısı rolünü başarıyla aldınız!`)
+        }
+
+    }
+  });
+
 client.on("ready", () => {
   client.channels.cache.get(ayarlar.botSesKanal).join();
   });
 
-client.login(ayarlar.token)
+
