@@ -13,7 +13,7 @@ const arwEmbed = new Discord.MessageEmbed()
 .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
 .setTimestamp()
 
-if(etiketlenen.roles.cache.has(ayarlar.tagRol)) return message.channel.send(arwEmbed.setDescription(`Kullanıcıdan başarıyla taglı <@&${ayarlar.tagRol}> rolü alındı!`)).then(etiketlenenKişi.roles.remove(ayarlar.tagRol))
+if(etiketlenen.roles.cache.has(ayarlar.tagRol)) return message.channel.send(arwEmbed.setDescription(`Kullanıcıdan başarıyla taglı <@&${ayarlar.tagRol}> rolü alındı!`)).then(etiketlenen.roles.remove(ayarlar.tagRol))
 
 etiketlenen.roles.add(ayarlar.tagRol)
 
