@@ -64,36 +64,3 @@ exports.config = {
     guildOnly: true,
     aliases: ["e", "male"]
 }
-)
-etiketlenen.roles.remove(ayarlar.kayıtsızRol)
-etiketlenen.setNickname(`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}`)
-
-
-
-const arwEmbed = new Discord.MessageEmbed()
-.setColor("RANDOM")
-.setDescription(`Kullanıcının ismi \`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}\` olarak değiştirildi       
-Erkek rolleri verildi! Yetkiliye +1 Teyit puanı daha Yazıldı!`)
-.setFooter(ayarlar.footer)
-.setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})) //Discord.gg/immortalxd
-.setTimestamp()
-message.react(ayarlar.yes)
-message.channel.send(arwEmbed)
-
-db.push(`isimler.${etiketlenen.id}`, {
-İsim: isim,
-Yaş: yaş,
-Yetkili: message.author.id
-})
-
-db.add(`erkekTeyit.${message.member.id}`, `1`)
-db.add(`toplamTeyit.${message.member.id}`, `1`)
-
-client.channels.cache.get(ayarlar.chat).send(`<a:krkr:921679287227134003> ${etiketlenen} **kaydolarak sunucuya giriş yaptı hoşgeldin.** <#921771656500899921> **Kanalından Rollerini Alabilirsin!**`)
-  
-}
-exports.config = {
-    name: "erkek",
-    guildOnly: true,
-    aliases: ["e", "male"]
-}
