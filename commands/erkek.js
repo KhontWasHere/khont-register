@@ -15,9 +15,7 @@ if(!yaş) return message.channel.send(`${ayarlar.noemoji} **Kaydetmek için bir 
 if(isNaN(yaş)) return message.channel.send(`${ayarlar.noemoji} **Belirttiğin yaş rakamlardan oluşmalı!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
   
 etiketlenen.roles.add(ayarlar.erkek)
-const Discord = require("discord.js")
-const db = require("quick.db")
-const ayarlar = require("../ayarlar.json")
+
 
 const arwEmbed = new Discord.MessageEmbed()
 .setColor("RANDOM")
