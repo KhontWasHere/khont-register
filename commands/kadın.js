@@ -40,7 +40,7 @@ Yetkili: message.author.id
 db.add(`kadinTeyit.${message.member.id}`, `1`)
 db.add(`toplamTeyit.${message.member.id}`, `1`)
 
-client.channels.cache.get(ayarlar.sohbetKanal).send(`<a:krkr:921679287227134003> ${etiketlenen} **kaydolarak sunucuya giriş yaptı hoşgeldin!** <#921771656500899921> **Kanalından Rollerini Alabilirsin**`)
+client.channels.cache.get(ayarlar.chat).send(`<a:krkr:921679287227134003> ${etiketlenen} **kaydolarak sunucuya giriş yaptı hoşgeldin!** <#921771656500899921> **Kanalından Rollerini Alabilirsin**`)
   
 }
 exports.config = {
