@@ -15,7 +15,9 @@ if(!yaş) return message.channel.send(`${ayarlar.noemoji} **Kaydetmek için bir 
 if(isNaN(yaş)) return message.channel.send(`${ayarlar.noemoji} **Belirttiğin yaş rakamlardan oluşmalı!**`).then(message.react(client.emojis.cache.get(ayarlar.noemoji)))
   
 etiketlenen.roles.add(ayarlar.erkek)
-
+etiketlenen.roles.add(ayarlar.kadınRol2)
+etiketlenen.roles.remove(ayarlar.kayıtsızRol)
+etiketlenen.setNickname(`${ayarlar.tag} ${isim} ${ayarlar.sembol} ${yaş}`)
 
 const arwEmbed = new Discord.MessageEmbed()
 .setColor("RANDOM")
@@ -36,7 +38,7 @@ Yetkili: message.author.id
 db.add(`erkekTeyit.${message.member.id}`, `1`)
 db.add(`toplamTeyit.${message.member.id}`, `1`)
 
-client.channels.cache.get(ayarlar.sohbetKanal).send(` ${etiketlenen} **kaydolarak sunucuya giriş yaptı hoşgeldin.** <#921771656500899921> **Kanalından Rollerini Alabilirsin!**`)
+client.channels.cache.get(ayarlar.chat).send(` ${etiketlenen} **kaydolarak sunucuya giriş yaptı hoşgeldin.** <#921771656500899921> **Kanalından Rollerini Alabilirsin!**`)
   
 }
 exports.config = {
